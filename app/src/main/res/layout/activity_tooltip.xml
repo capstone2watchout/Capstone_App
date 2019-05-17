@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/background">
+
+    <RelativeLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:background="#395060">
+
+        <ImageView
+            android:id="@+id/backImageView"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/back" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textSize="40sp"
+            android:textColor="#ffffff"
+            android:text="Watch out" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/onoffLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:gravity="center"
+        app:layout_constraintLeft_toLeftOf="@id/dogSwitch"
+        app:layout_constraintRight_toRightOf="@id/dogSwitch"
+        app:layout_constraintTop_toBottomOf="@id/topBar">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="on/off"
+            android:textSize="25sp" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/dogImageView"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginRight="100dp"
+        app:layout_constraintTop_toBottomOf="@id/onoffLayout"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:src="@drawable/dog" />
+
+    <Switch
+        android:id="@+id/dogSwitch"
+        android:layout_width="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/dogImageView"
+        app:layout_constraintTop_toTopOf="@id/dogImageView"
+        app:layout_constraintLeft_toRightOf="@id/dogImageView" />
+
+    <ImageView
+        android:id="@+id/sirenImageView"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginRight="100dp"
+        app:layout_constraintTop_toBottomOf="@id/dogImageView"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:src="@drawable/siren" />
+
+    <Switch
+        android:id="@+id/sirenSwitch"
+        android:layout_width="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/sirenImageView"
+        app:layout_constraintTop_toTopOf="@id/sirenImageView"
+        app:layout_constraintLeft_toRightOf="@id/sirenImageView" />
+
+    <ImageView
+        android:id="@+id/babyImageView"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginRight="100dp"
+        app:layout_constraintTop_toBottomOf="@id/sirenImageView"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:src="@drawable/baby" />
+
+    <Switch
+        android:id="@+id/babySwitch"
+        android:layout_width="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/babyImageView"
+        app:layout_constraintTop_toTopOf="@id/babyImageView"
+        app:layout_constraintLeft_toRightOf="@id/babyImageView" />
+
+    <ImageView
+        android:id="@+id/knockImageView"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginRight="100dp"
+        app:layout_constraintTop_toBottomOf="@id/babyImageView"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:src="@drawable/knock" />
+
+    <Switch
+        android:id="@+id/knockSwitch"
+        android:layout_width="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/knockImageView"
+        app:layout_constraintTop_toTopOf="@id/knockImageView"
+        app:layout_constraintLeft_toRightOf="@id/knockImageView" />
+
+    <ImageView
+        android:id="@+id/impactImageView"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginRight="100dp"
+        app:layout_constraintTop_toBottomOf="@id/knockImageView"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:src="@drawable/impact" />
+
+    <Switch
+        android:id="@+id/impactSwitch"
+        android:layout_width="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/impactImageView"
+        app:layout_constraintTop_toTopOf="@id/impactImageView"
+        app:layout_constraintLeft_toRightOf="@id/impactImageView" />
+
+</android.support.constraint.ConstraintLayout>
