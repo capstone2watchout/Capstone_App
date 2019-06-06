@@ -59,6 +59,15 @@
         app:layout_constraintRight_toRightOf="parent"
         android:src="@drawable/dog" />
 
+    <TextView
+        android:id="@+id/dogTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="강아지 소리"
+        app:layout_constraintTop_toBottomOf="@id/dogImageView"
+        app:layout_constraintLeft_toLeftOf="@id/dogImageView"
+        app:layout_constraintRight_toRightOf="@id/dogImageView"/>
+
     <Switch
         android:id="@+id/dogSwitch"
         android:layout_width="50dp"
@@ -74,10 +83,19 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginRight="100dp"
-        app:layout_constraintTop_toBottomOf="@id/dogImageView"
+        app:layout_constraintTop_toBottomOf="@id/dogTextView"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:src="@drawable/siren" />
+
+    <TextView
+        android:id="@+id/sirenTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="사이렌 소리"
+        app:layout_constraintTop_toBottomOf="@id/sirenImageView"
+        app:layout_constraintLeft_toLeftOf="@id/sirenImageView"
+        app:layout_constraintRight_toRightOf="@id/sirenImageView"/>
 
     <Switch
         android:id="@+id/sirenSwitch"
@@ -94,10 +112,19 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginRight="100dp"
-        app:layout_constraintTop_toBottomOf="@id/sirenImageView"
+        app:layout_constraintTop_toBottomOf="@id/sirenTextView"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:src="@drawable/baby" />
+
+    <TextView
+        android:id="@+id/babyTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="아기 소리"
+        app:layout_constraintTop_toBottomOf="@id/babyImageView"
+        app:layout_constraintLeft_toLeftOf="@id/babyImageView"
+        app:layout_constraintRight_toRightOf="@id/babyImageView"/>
 
     <Switch
         android:id="@+id/babySwitch"
@@ -114,10 +141,19 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginRight="100dp"
-        app:layout_constraintTop_toBottomOf="@id/babyImageView"
+        app:layout_constraintTop_toBottomOf="@id/babyTextView"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:src="@drawable/knock" />
+
+    <TextView
+        android:id="@+id/knockTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="노크 소리"
+        app:layout_constraintTop_toBottomOf="@id/knockImageView"
+        app:layout_constraintLeft_toLeftOf="@id/knockImageView"
+        app:layout_constraintRight_toRightOf="@id/knockImageView"/>
 
     <Switch
         android:id="@+id/knockSwitch"
@@ -134,10 +170,19 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginRight="100dp"
-        app:layout_constraintTop_toBottomOf="@id/knockImageView"
+        app:layout_constraintTop_toBottomOf="@id/knockTextView"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:src="@drawable/impact" />
+
+    <TextView
+        android:id="@+id/impactTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="폭음 소리"
+        app:layout_constraintTop_toBottomOf="@id/impactImageView"
+        app:layout_constraintLeft_toLeftOf="@id/impactImageView"
+        app:layout_constraintRight_toRightOf="@id/impactImageView"/>
 
     <Switch
         android:id="@+id/impactSwitch"

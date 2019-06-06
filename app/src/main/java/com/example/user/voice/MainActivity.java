@@ -1,30 +1,29 @@
 package com.example.user.voice;
 
-import android.Manifest;
+import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.AudioRecord;
 import android.media.MediaRecorder;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
+import java.nio.ShortBuffer;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
-import java.nio.ShortBuffer;
 
 import static android.media.AudioFormat.CHANNEL_IN_MONO;
 import static android.media.AudioFormat.ENCODING_PCM_16BIT;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 
     /* For Debug */
     static final String TAG = "MainActivity";
@@ -40,15 +39,26 @@ public class MainActivity extends AppCompatActivity {
     Thread audioThread;
 
     private static final int REQUEST_RECORD_AUDIO = 13;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final ImageButton button1 = (ImageButton) findViewById(R.id.button1);
-        final ImageButton button2 = (ImageButton) findViewById(R.id.button2);
-        final TextView textView = (TextView) findViewById(R.id.textView);
-        final BoardManager boardManager = (BoardManager) findViewById(R.id.BaordManangerView);
+        final ImageView toolTip = (ImageView) findViewById(R.id.toolTipImageView);
+
+        toolTip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ToolTipActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        final ImageView button1 = (ImageView) findViewById(R.id.calibrateImageView);
+        final ImageView button2 = (ImageView) findViewById(R.id.micImageView);
+        final TextView textView = (TextView) findViewById(R.id.mainTextView);
+        final BoardManager boardManager = (BoardManager) findViewById(R.id.boardManagerView);
 
         final Handler handler = new Handler() {
             @Override
@@ -57,26 +67,26 @@ public class MainActivity extends AppCompatActivity {
                 textView.setText(message.obj.toString());
             }
         };
-
-
-        /* RECORDER  permission */
-        requestMicrophonePermission();
-
-        textView.setTextSize(40);
+//
+//
+//        /* RECORDER  permission */
+//        requestMicrophonePermission();
+//
+//        textView.setTextSize(40);
         textView.setMovementMethod(new ScrollingMovementMethod());
-
-        button1.setImageResource(R.drawable.button_default);
-        button2.setImageResource(R.drawable.button_threshold);
-
+//
+//        button1.setImageResource(R.drawable.button_default);
+//        button2.setImageResource(R.drawable.button_threshold);
+//
         try {
             recordManager = new RecordManager(handler, boardManager, THRESHOLD, MainActivity.this);
         } catch (IOException e) {
             Log.e(TAG, "Create Model Failed");
         }
-
+//
         audioThread = new Thread(recordManager.getDispatcher(), "Audio Thread");
-
-        button1.setOnClickListener(new ImageButton.OnClickListener() {
+//
+        button1.setOnClickListener(new ImageView.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (!isRecording) {
@@ -98,8 +108,8 @@ public class MainActivity extends AppCompatActivity {
                 view.invalidate();
             }
         });
-
-        button2.setOnClickListener(new ImageButton.OnClickListener() {
+//
+        button2.setOnClickListener(new ImageView.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -143,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void requestMicrophonePermission() {
         requestPermissions(
-                new String[] {android.Manifest.permission.RECORD_AUDIO}, REQUEST_RECORD_AUDIO);
+                new String[]{android.Manifest.permission.RECORD_AUDIO}, REQUEST_RECORD_AUDIO);
     }
 
     @Override
@@ -158,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
     private double CalculateEnergy(ShortBuffer buffer) {
         double sum = 0;
 
-        for (int i=0; i<buffer.capacity(); i++) {
+        for (int i = 0; i < buffer.capacity(); i++) {
             sum += buffer.get(i) * buffer.get(i);
         }
 
