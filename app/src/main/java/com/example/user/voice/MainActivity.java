@@ -70,7 +70,7 @@ public class MainActivity extends Activity {
 //
 //
 //        /* RECORDER  permission */
-//        requestMicrophonePermission();
+        requestMicrophonePermission();
 //
 //        textView.setTextSize(40);
         textView.setMovementMethod(new ScrollingMovementMethod());

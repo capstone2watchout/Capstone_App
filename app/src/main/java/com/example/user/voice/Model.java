@@ -17,7 +17,7 @@ public class Model {
     private static String TAG = "TF_Model";
 
     private static final String LABEL_PATH = "labels.txt";
-    private static final String MODEL_PATH = "frozen_model.tflite";
+    private static final String MODEL_PATH = "frozen_saved_model.tflite";
 
     private Interpreter tflite;
 
@@ -47,7 +47,7 @@ public class Model {
             }
         }
         System.out.println(m + ":" + max);
-        if (max > 0.90)
+        //if (max > 0.90)
             textManager.setText(m);
 
     }

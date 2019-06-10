@@ -40,7 +40,7 @@ public class RecordManager {
     static final int FEATURE_PER_FRAME = 40; // 40 Frame -> 1 feature input
     static final int NUM_MEL_FILTER_BANK = 40;  // 40 dimension Filter bank
     static final int MFCC_PER_FRAME = 40;   // only for mfcc
-    static final float LOWER_FILTER_FREQ = 25.0f;
+    static final float LOWER_FILTER_FREQ = 64.0f;
     static final float UPPER_FILTER_FREQ = SAMPLING_RATE / 2;
 
 
@@ -96,7 +96,10 @@ public class RecordManager {
                 float bin[] = mfcc.magnitudeSpectrum(audioFloatBuffer);
                 //Log.d("Spectrum", "Length: " + bin.length + " Data: " + Arrays.toString(bin));
 
-                float fbank[] = mfcc.melFilter(bin, mfcc.getCenterFrequencies());
+                int [] centerFreq = mfcc.getCenterFrequencies().clone();
+                centerFreq[NUM_MEL_FILTER_BANK] = (centerFreq[NUM_MEL_FILTER_BANK+1] + centerFreq[NUM_MEL_FILTER_BANK-1]) / 2;
+
+                float fbank[] = mfcc.melFilter(bin, centerFreq);
                 //Log.d("MelFBank", "Length: " + fbank.length + " Data: " + Arrays.toString(fbank));
 
                 //float f[] = mfcc.nonLinearTransformation(fbank).clone();
@@ -105,15 +108,15 @@ public class RecordManager {
                 //float m[] = mfcc.cepCoefficients(f);
                 //Log.d("MFCC", "Length: " + m.length + " Data: " + Arrays.toString(m));
 
-                System.arraycopy(fbank, 0, inp, currentFrame * NUM_MEL_FILTER_BANK, NUM_MEL_FILTER_BANK);
-
-                currentFrame++;
-
+                if (currentFrame < FEATURE_PER_FRAME) {
+                    System.arraycopy(fbank, 0, inp, currentFrame * 40, 40);
+                    currentFrame++;
+                }
                 if (currentFrame == FEATURE_PER_FRAME && model != null) {
                     Log.d("MelFBank", "Length: " + inp.length + " Data: " + Arrays.toString(inp));
-                    currentFrame = 0;
                     model.runModel(inp);
-                    Arrays.fill(inp, 0);
+                    currentFrame = 0;
+
                 }
 
                 return false;
