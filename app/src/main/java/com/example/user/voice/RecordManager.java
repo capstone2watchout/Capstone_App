@@ -90,7 +90,7 @@ public class RecordManager {
 
                 FloatBuffer floatBuffer = FloatBuffer.allocate(FRAME_MOVE);
                 floatBuffer.put(audioFloatBuffer, FRAME_OVERLAP, FRAME_MOVE);
-                boardManager.setData(floatBuffer, FRAME_MOVE, true);
+                //boardManager.setData(floatBuffer, FRAME_MOVE, true);
                 //Log.d("AudioDrawData", "Length: " + FRAME_MOVE + " Data: " + Arrays.toString(floatBuffer.array()));
 
                 float bin[] = mfcc.magnitudeSpectrum(audioFloatBuffer);
@@ -109,14 +109,14 @@ public class RecordManager {
                 //Log.d("MFCC", "Length: " + m.length + " Data: " + Arrays.toString(m));
 
                 if (currentFrame < FEATURE_PER_FRAME) {
-                    System.arraycopy(fbank, 0, inp, currentFrame * 40, 40);
+                    System.arraycopy(fbank, 0, inp, currentFrame * FEATURE_PER_FRAME, FEATURE_PER_FRAME);
                     currentFrame++;
                 }
                 if (currentFrame == FEATURE_PER_FRAME && model != null) {
-                    Log.d("MelFBank", "Length: " + inp.length + " Data: " + Arrays.toString(inp));
+                    //Log.d("input ", " Data: " + Arrays.toString(inp));
                     model.runModel(inp);
-                    currentFrame = 0;
-
+                    currentFrame = 35;
+                    System.arraycopy(inp, (FEATURE_PER_FRAME - currentFrame) * FEATURE_PER_FRAME, inp, 0, FEATURE_PER_FRAME * currentFrame);
                 }
 
                 return false;

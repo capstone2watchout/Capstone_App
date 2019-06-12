@@ -107,7 +107,7 @@ public class BoardManager extends SurfaceView implements SurfaceHolder.Callback 
     void drawBoard() {
         Paint paint = new Paint();
 
-        paint.setColor(Color.BLACK);
+        paint.setColor(Color.WHITE);
         canvas.drawRect(0, 0, screenWidth, screenHeight, paint);
 
         paint.setColor(Color.WHITE);
